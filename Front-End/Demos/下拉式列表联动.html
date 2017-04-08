@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>下拉式列表联动</title>
+
+<script language="JavaScript" type="text/javascript">
+     var country=[
+     ["中华人民共和国","日本","朝鲜","韩国","蒙古","孟加拉国","不丹","印度","马尔代夫"],
+     ["巴哈马","伯利兹","美国","巴巴多斯","加拿大","哥斯达黎加","古巴","萨尔瓦多","格林纳达","墨西哥","巴拿马"],
+     ["哥伦比亚","委内瑞拉","圭亚那","苏里南","厄瓜多尔","秘鲁","巴西","玻利维亚","智利","巴拉圭"],
+     ["埃及","苏丹","利比亚","突尼斯","阿尔及利亚","摩洛哥","中非","喀麦隆","赤道几内亚","加蓬"],
+     ["英国","爱尔兰","荷兰","比利时","卢森堡","法国","摩纳哥","意大利","梵蒂冈","圣马力诺","马耳他","西班牙","葡萄牙","安道尔"],
+     ["澳大利亚","瑙鲁共和国","瓦努阿图共和国","马绍尔群岛共和国","汤加王国","新西兰","图瓦卢","基里巴斯共和国","所罗门群岛","斐济共和国"]
+     ];
+
+     function getCountry(){       
+         var sltcontinent=document.form1.continent;
+         var sltCountry=document.form1.country;         
+         var continentcountry=country[sltcontinent.selectedIndex - 1]; 
+         sltCountry.length=1; 
+         for(var i=0;i<continentcountry.length;i++){
+             sltCountry[i+1]=new Option(continentcountry[i],continentcountry[i]);
+         }
+     }
+ </script>
+</head>
+
+<body>
+<br><br><br>
+ <FORM METHOD=POST ACTION="" name="form1">
+         <SELECT NAME="continent" onChange="getCountry()">
+            <OPTION VALUE="0">请选择大洲 </OPTION>
+             <OPTION VALUE="亚洲">亚洲 </OPTION>
+             <OPTION VALUE="北美洲">北美洲 </OPTION>
+             <OPTION VALUE="南美洲">南美洲 </OPTION>
+             <OPTION VALUE="非洲">非洲 </OPTION>
+             <OPTION VALUE="欧洲">欧洲 </OPTION>
+             <OPTION VALUE="大洋洲">大洋洲 </OPTION>
+         </SELECT>   
+         <SELECT NAME="country">
+             <OPTION VALUE="0">请选择国家 </OPTION>
+         </SELECT>
+   </FORM>
+
+</body>
+</html>

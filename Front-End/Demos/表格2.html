@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+	<title>表格</title>
+</head>
+<body>
+    <form name="form1" method="post" action=""> 
+    <table  border="0" align="center"  width="408"  style="color: #fa0"> 
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" name="myemail" placeholder="请输入正确email地址"/></td>
+        </tr>
+        <tr>
+            <td>url:</label></td>
+            <td><input type="url" name="my_url"/></td>
+        </tr>
+        <tr>
+            <td>date:</td>
+            <td><input type="date" name="user_date"/> </td>
+        </tr>
+        <tr>
+            <td>time:</td>
+            <td><input type="time" name="user_time"/> </td>
+        </tr>
+        <tr>
+            <td>month:</td>
+            <td><input type="month" name="user_month"/> </td>
+        </tr>
+         <tr>
+            <td>week:</td>
+            <td><input type="week" name="user_week"/> </td>
+        </tr>
+         <tr>
+            <td>number:</td>
+            <td><input type="number" name="points" min="1" max="10"/> </td>
+        </tr>
+        <tr>
+            <td>range:</td>
+            <td><input type="range" name="points" min="1" max="10"/> </td>
+        </tr>
+        <tr>
+            <td>search:</td>
+            <td><input id="search" type="number" list="searchlist" required/> 
+                <datalist id="searchlist">
+                 <option value="11"/>
+                 <option value="12"/> 
+                 <option value="13"/>
+                 </datalist>
+            </td>
+        </tr>
+         <tr>
+            <td>color:</td>
+            <td><input type="color"/></td>
+        </tr>
+         <tr>
+            <td>placeholder:</td>
+            <td><input type="search" name="user_search" placeholder="点击以清除"/></td>
+        </tr>
+         <tr>
+            <td>autofocus:</td>
+            <td><input type="text" name="user_name" autofocus="autofocus" /></td>
+        </tr>
+        <tr>
+            <td>list:</td>
+            <td><input type="url" list="url_list" name="link"/>
+                  <datalist id="url_list">
+                  <option label=“Baidu" value="http://www.baidu.com"/>
+                  <option label="Google" value="http://www.google.com"/> 
+                  <option label="Microsoft" value="http://www.microsoft.com"/> 
+                  </datalist>
+                 </td>
+        </tr>
+        <tr>
+            <td>pattern:</td>
+            <td><input type="text" pattern="[A-z]{3}" title="code" placeholder="输入邮政编码"/></td>
+        </tr>
+         <tr>
+            <td>require:</td>
+            <td><input type="text" name="usr_name" required="required" placeholder="必填项"/></td>
+        </tr>
+        <tr>
+            <td>pattern:</td>
+            <td><input type="range" name="points" min="1" max="10"/> </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit"/></td>
+        </tr>
+    </table> 
+    </form>
+</body>
+</html>
