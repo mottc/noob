@@ -20,12 +20,12 @@ dtype('int64')
 >>> b.dtype
 dtype('float64')
 ```
-注意使用`array`时，要提供一个list而不是一堆参数。
+- 注意使用`array`时，要提供一个list而不是一堆参数。
 ```python
 >>> a = np.array(1,2,3,4)    # WRONG
 >>> a = np.array([1,2,3,4])  # RIGHT
 ```
-多维矩阵的创建
+- 多维矩阵的创建
 ```py
 >>> b = np.array([(1.5,2,3), (4,5,6)])
 >>> b
@@ -33,7 +33,7 @@ array([[ 1.5,  2. ,  3. ],
        [ 4. ,  5. ,  6. ]])
 ```
 
-指定数据类型
+- 指定数据类型
 ```py
 a = np.array([2,23,4],dtype=np.int)
 print(a.dtype)
@@ -170,13 +170,13 @@ array([ True, True, False, False], dtype=bool)
 ...             [0,1]] )
 >>> B = np.array( [[2,0],
 ...             [3,4]] )
->>> A*B                         # elementwise product
+>>> A*B                         # elementwise product 元素相乘
 array([[2, 0],
        [0, 4]])
->>> A.dot(B)                    # matrix product
+>>> A.dot(B)                    # matrix product 矩阵相乘
 array([[5, 4],
        [3, 4]])
->>> np.dot(A, B)                # another matrix product
+>>> np.dot(A, B)                # another matrix product 矩阵相乘
 array([[5, 4],
        [3, 4]])
 ```
@@ -230,9 +230,8 @@ np.min(a)   # 0.23651223533671784
 np.max(a)   # 0.90438450240606416
 ```
 
-如果你需要对行或者列进行查找运算，就需要在上述代码中为 axis 进行赋值。 当axis的值为0的时候，将会以列作为查找单元， 当axis的值为1的时候，将会以行作为查找单元。
+- 如果你需要对行或者列进行查找运算，就需要在上述代码中为 axis 进行赋值。 当axis的值为0的时候，将会以列作为查找单元， 当axis的值为1的时候，将会以行作为查找单元。
 
-为了更加清晰，在刚才的例子中我们继续进行查找
 ```py
 >>> b = np.arange(12).reshape(3,4)
 >>> b
@@ -251,8 +250,9 @@ array([[ 0,  1,  3,  6],
        [ 4,  9, 15, 22],
        [ 8, 17, 27, 38]])
 ```
+# Numpy通用方法
 
-argmin() 和 argmax() 两个函数分别对应着求矩阵中最小元素和最大元素的索引
+- argmin() 和 argmax() 两个函数分别对应着求矩阵中最小元素和最大元素的索引
 ```py
 import numpy as np
 A = np.arange(2,14).reshape((3,4)) 
@@ -266,7 +266,7 @@ print(np.argmax(A))    # 11
 # 在矩阵的12个元素中，最小值即2，对应索引0，最大值为13，对应索引为11
 ```
 
-矩阵的均值
+- 矩阵的均值
 ```py
 print(np.mean(A))        # 7.5
 print(np.average(A))     # 7.5
@@ -274,12 +274,12 @@ print(np.average(A))     # 7.5
 print(A.mean())          # 7.5
 ```
 
-中位数
+- 中位数
 ```py
 print(A.median())       # 7.5
 ```
 
-累加函数
+- 累加函数
 ```py
 print(np.cumsum(A)) 
 
@@ -287,7 +287,7 @@ print(np.cumsum(A))
 # 在cumsum()函数中：生成的每一项矩阵元素均是从原矩阵首项累加到对应项的元素之和。比如元素9，在cumsum()生成的矩阵中序号为3，即原矩阵中2，3，4三个元素的和。
 ```
 
-累差函数
+- 累差函数
 ```py
 print(np.diff(A))    
 
@@ -297,7 +297,7 @@ print(np.diff(A))
 # 该函数计算的便是每一行中后一项与前一项之差。故一个3行4列矩阵通过函数计算得到的矩阵便是3行3列的矩阵。
 ```
 
-nonzero()函数
+- nonzero()函数
 ```py
 print(np.nonzero(A))    
 # (array([0,0,0,0,1,1,1,1,2,2,2,2]),array([0,1,2,3,0,1,2,3,0,1,2,3]))
@@ -305,7 +305,7 @@ print(np.nonzero(A))
 # 这个函数将所有非零元素的行与列坐标分割开，重构成两个分别关于行和列的矩阵
 ```
 
-排序函数
+- 排序函数
 ```py
 import numpy as np
 A = np.arange(14,2, -1).reshape((3,4)) 
@@ -323,7 +323,7 @@ print(np.sort(A))
 # 仅针对每一行进行从小到大排序操作
 ```
 
-矩阵的转置
+- 矩阵的转置
 
 ```py
 print(np.transpose(A))    
@@ -339,7 +339,7 @@ print(A.T)
 #        [11, 7, 3]])
 ```
 
-clip()函数
+- clip()函数
 ```py
 print(A)
 # array([[14,13,12,11]
@@ -380,6 +380,34 @@ print(A[2])
 ```
 实际上这时的A[2]对应的就是矩阵A中第三行(从0开始算第一行)的所有元素。
 
+```py
+>>> a = np.arange(10)**3
+>>> a
+array([  0,   1,   8,  27,  64, 125, 216, 343, 512, 729])
+>>> a[2]
+8
+>>> a[2:5]
+array([ 8, 27, 64])
+>>> a[:6:2] = -1000    # equivalent to a[0:6:2] = -1000; from start to position 6, exclusive, set every 2nd element to -1000
+>>> a
+array([-1000,     1, -1000,    27, -1000,   125,   216,   343,   512,   729])
+>>> a[ : :-1]                                 # reversed a
+array([  729,   512,   343,   216,   125, -1000,    27, -1000,     1, -1000])
+>>> for i in a:
+...     print(i**(1/3.))
+...
+nan
+1.0
+nan
+3.0
+nan
+5.0
+6.0
+7.0
+8.0
+9.0
+```
+
 ## 二维索引
 
 如果你想要表示具体的单个元素，可以仿照上述的例子：
@@ -394,6 +422,27 @@ print(A[1, 1])      # 8
 ```py
 print(A[1, 1:3])    # [8 9]
 ```
+
+```py
+>>> b
+array([[ 0,  1,  2,  3],
+       [10, 11, 12, 13],
+       [20, 21, 22, 23],
+       [30, 31, 32, 33],
+       [40, 41, 42, 43]])
+>>> b[2,3]
+23
+>>> b[0:5, 1]                       # each row in the second column of b
+array([ 1, 11, 21, 31, 41])
+>>> b[ : ,1]                        # equivalent to the previous example
+array([ 1, 11, 21, 31, 41])
+>>> b[1:3, : ]                      # each column in the second and third row of b
+array([[10, 11, 12, 13],
+       [20, 21, 22, 23]])
+>>> b[-1]                                  # the last row. Equivalent to b[-1,:]
+array([40, 41, 42, 43])
+```
+
 这一表示形式即针对第二行中第2到第4列元素进行切片输出（不包含第4列）。 此时我们适当的利用for函数进行打印：
 ```py
 for row in A:
@@ -434,6 +483,55 @@ for item in A.flat:
 # 14
 ```
 这一脚本中的flatten是一个展开性质的函数，将多维的矩阵进行展开成1行的数列。而flat是一个迭代器，本身是一个object属性。
+
+# Numpy shape
+
+```py
+>>> a = np.floor(10*np.random.random((3,4)))
+>>> a
+array([[ 2.,  8.,  0.,  6.],
+       [ 4.,  5.,  1.,  1.],
+       [ 8.,  9.,  3.,  6.]])
+>>> a.shape
+(3, 4)
+
+>>> a.ravel()  # returns the array, flattened
+array([ 2.,  8.,  0.,  6.,  4.,  5.,  1.,  1.,  8.,  9.,  3.,  6.])
+>>> a.reshape(6,2)  # returns the array with a modified shape
+array([[ 2.,  8.],
+       [ 0.,  6.],
+       [ 4.,  5.],
+       [ 1.,  1.],
+       [ 8.,  9.],
+       [ 3.,  6.]])
+>>> a.T  # returns the array, transposed
+array([[ 2.,  4.,  8.],
+       [ 8.,  5.,  9.],
+       [ 0.,  1.,  3.],
+       [ 6.,  1.,  6.]])
+>>> a.T.shape
+(4, 3)
+>>> a.shape
+(3, 4)
+```
+以上操作会返回一个新的数组，而原数组不改变。`resize`会改变原数组。
+```py
+>>> a
+array([[ 2.,  8.,  0.,  6.],
+       [ 4.,  5.,  1.,  1.],
+       [ 8.,  9.,  3.,  6.]])
+>>> a.resize((2,6))
+>>> a
+array([[ 2.,  8.,  0.,  6.,  4.,  5.],
+       [ 1.,  1.,  8.,  9.,  3.,  6.]])
+```
+如果在reshape操作中，有一个维度给了`-1`值，那么该维度会根据其他维度值自动计算出来。
+```py
+>>> a.reshape(3,-1)
+array([[ 2.,  8.,  0.,  6.],
+       [ 4.,  5.,  1.,  1.],
+       [ 8.,  9.,  3.,  6.]])
+```
 
 # Numpy array合并
 
