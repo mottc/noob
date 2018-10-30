@@ -6,7 +6,7 @@
 
 `@Deprecated` 用于修饰已经过时的方法;
 
-`@suppressWarings("deprecation")` 用于通知java编译器忽略特定的编译警告。
+`@suppressWarings` 用于通知java编译器忽略特定的编译警告。
 
 ## 2. 注解分类
 
@@ -22,10 +22,10 @@
 
 ## 3. 自定义注解
 ```java
-    @Target({ElementType.METHOD,ElementType.TYPE})
-    @Retention(RetentionPolicy.RUNTIME)
-    @Inherited
-    @Documented	
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented	
 public @interface Description{//使用@interface关键字注解
 	String name();//成员以无参无异常方式声明
 	String author();
@@ -37,19 +37,19 @@ public @interface Description{//使用@interface关键字注解
 3. 没有成员的注解称为标识注解
 4. 元注解
 
-    @Target({ElementType.CONSTRUCTOR,ElementType.FIELD,ElementType.METHOD})
+    `@Target({ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD})`
 
     // Target 注解的作用域   CONSTRUCTOR 构造方法声明，FIELD 字段声明，LOCAL_VARIABLE 局部变量声明 ，METHOD 方法声明，PACKAGE 包声明，PARAMETER 参数声明，TYPE 类接口。
 
-    @Retention(RetentionPolicy.RUNTIME)
+    `@Retention(RetentionPolicy.RUNTIME)`
 
     //Retention 生命周期——SOURCE 只在源码显示，编译时会丢弃；CLASS 编译时会记录到class中，运行时忽略；RUNTIME 运行时存在，可以通过反射读取。
 
-    @Inherited 
+    `@Inherited`
 
     //Inherited 允许子类继承
 
-    @Documented 
+    `@Documented` 
 
     //Documented 生成javadoc的时候包含注解
 ## 4. 使用自定义注解
